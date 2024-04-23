@@ -4,11 +4,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Almeida JJ</title>
+
+    <style>
+        /* Estilos CSS para resaltar algunos elementos */
+
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+
+
+        header {
+            background-color: #000;
+            color: yellow;
+            padding: 20px;
+            text-align: center;
+        }
+
+        img {
+
+            width: 100px;
+
+        }
+
+        nav {
+            background-color: yellow;
+            color: #000;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
+            /* text-align: left; */
+        }
+    </style>
 </head>
 
 <body>
 
+    <!-- eleccion de un tema -->
+    <header>
+        <!-- <h1>Jiu-jitsu brasileño</h1>
+        <p>El jiu-jitsu brasileño - arte marcial - deporte de combate - sistema de defensa personal.</p> -->
+        <img src="/landing_page/img.png" alt="">
+        <h1>Almeida JJ</h1>
+        <p>BRAZILIAN JIU JITSU <br>ARGENTINA <br>
+            NORDESTE</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#origen">¿Qué es el jiu-jitsu brasileño (o BJJ)?</a></li>
+            <li><a href="#nosotros">Sobre nosotros</a></li>
+            <li><a href="#donde">¿Dónde nos encontramos?</a></li>
+            <li><a href="#contacto">Contactanos</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <section id="origen">
+            <h2>¿Qué es el jiu-jitsu brasileño (o BJJ)?</h2>
+            <p>El jiu-jitsu brasileño (o BJJ) es un arte marcial, deporte de combate y sistema de defensa personal
+                desarrollado en Brasil. Se centra principalmente en la lucha cuerpo a cuerpo en el suelo, usando para
+                ello luxaciones, estrangulaciones, inmovilizaciones y derribos. El principal <b>objetivo</b> del
+                jiu-jitsu
+                brasileño es someter al rival mediante una luxación o estrangulación sin necesidad de usar golpes, de
+                ahí que se le denomine a veces «arte suave»</p>
+        </section>
+        <section id="nosotros">
+            <h2>Sobre nosotros</h2>
+            <p>Somos sede de Almeida JJ - ARGENTINA. <br> Contamos un grupo de alumnos unidos, disciplinados y
+                comprometidos con esta arte marcial <br>Las clases se encuentran impartidas por Alberto Nuñez - Faixa
+                Preta. Ademas de contar con chicos y adultos de distintas edades con cinturos que van desde Blanco hasta
+                Preta</p>
+        </section>
+        <section id="donde">
+            <h2>¿Dónde nos encontramos?</h2>
+            <p>Nos encontramos integrados con el Centro de Entrenamiento Deportivo. Encontrado en la ciudad de Apostoles
+                sobre la Calle Belgrano (entre pellegrini y maipú)</p>
+        </section>
+
+        <section id="contacto">
+            <h2>Contactanos</h2>
+            <p>Puedes ponerte en contacto con nosotros a través del siguiente formulario:</p>
+            <form>
+                <label for="nombre">Nombre:</label>
+                <br>
+                <input type="text" id="nombre" name="nombre" required><br><br>
+                <label for="email">Email:</label>
+                <br>
+                <input type="email" id="email" name="email" required><br><br>
+                <label for="mensaje">Mensaje:</label><br>
+                <textarea id="mensaje" name="mensaje" rows="4" cols="24"></textarea><br><br>
+                <input type="submit" value="Enviar">
+            </form>
+        </section>
+    </main>
+    <footer>
+
+
+
+        <div style="text-align: left;">
+            <p>Podes seguirnos en: </p>
+            <ul>
+                <li>Instagram:
+                    almeidajjnordeste</li>
+                <li>Facebook:almeidajjnordesteApostoles </li>
+            </ul>
+        </div>
+        <p style="text-align: center;">©Copyright 2024. Todos los derechos reservados </p>
+    </footer>
 </body>
 
 </html>
