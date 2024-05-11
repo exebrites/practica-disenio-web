@@ -1,0 +1,44 @@
+html {
+    font-size: 10px;
+}
+
+
+img {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    left: 42.5%;
+}
+
+h1 {
+    font-size: 5rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+.descripcion {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 2rem;
+    line-height: 1.5;
+}
+
+a {
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.redes-sociales {
+    text-align: left;
+    font-size: 1.5rem;
+}
+
+.copy {
+    text-align: center;
+}

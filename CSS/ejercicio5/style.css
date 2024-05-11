@@ -1,0 +1,14 @@
+.btn-personalizado {
+    padding: 10px 20px;
+    background-color: blue;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+
+}
+
+.btn-personalizado:hover {
+    background-color: black;
+    color: yellow;
+}
