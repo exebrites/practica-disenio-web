@@ -1,0 +1,11 @@
+body {
+    background-color: #f0f4f8; /* Fondo de la página */
+    color: #333333; /* Color de texto principal */
+    font-family: Arial, sans-serif;
+}
+.centrado{
+    text-align: center;
+}
+.p-letras {
+    font-size: x-large;
+}
