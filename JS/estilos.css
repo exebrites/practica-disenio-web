@@ -14,8 +14,11 @@ body {
 /* Header styling */
 header{
     text-align: center;
+    width: 50%;
+
     margin-bottom: 20px;
 }
+
 
 /* Main container styling */
 main {

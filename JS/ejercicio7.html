@@ -6,14 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio7</title>
     <link rel="stylesheet" href="estilos.css">
+    <style>
+        #contenedor-juego {
+            display: flex;
+            flex-wrap: wrap;
+            width: 200px;
+            height: 200px;
+        }
 
+        .boca-abajo {
+            width: 50px;
+            height: 50px;
+            background-image: none;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- Crea una lista de elementos (pueden ser párrafos, divs, etc.) en HTML. Al hacer clic
-en cada elemento, cambia su estilo (por ejemplo, cambia el color de fondo o el
-tamaño de la fuente). -->
     <a href="index.html">Pagina de inicio</a>
     <header>
         <h1>Ejercicio7: juego de Memoria</h1>
@@ -25,10 +40,180 @@ tamaño de la fuente). -->
         <span style="color: red;">Fata terminar</span>
     </header>
     <main>
+        <!-- <div id="contenedor-juego">
+            <img src="/numero1.png" alt="">
+            
+            <img src="/numero1.png" alt="">
+           
+            <img src="/numero2.png" alt="">
+
+            <img src="/numero2.png" alt="">
+        </div> -->
+        <button id="btnJugar" onclick="jugar();">Jugar</button>
+        <button id="btnReiniciar" onclick="reiniciar();" style="display: none;">Reiniciar</button>
+        <div id="contenedor-juego">
+
+        </div>
 
     </main>
     <script>
 
+        // # Crea un juego de memoria en HTML con una cuadrícula de tarjetas boca abajo.
+        // OPCIONES 
+        // 1 - crear la cuadricula con html 
+        // 2 - crear la cuadricula con js 
+
+        //# Al hacer clic en una tarjeta, muéstrala boca arriba. 
+
+        //# Si dos tarjetas coinciden, déjala boca arriba
+
+        //# Si no coinciden, vuélvelas a poner boca abajo después de un breve período de tiempo
+
+        // crear la cuadricula con js 
+
+        // 1 trer el contenedor para generar dentro las imagenes 
+        // 2 generar etiquetas img 
+        // 3 agregarlas dentro del div
+        // 4 altenar entre boca abajo y boca arriba 
+        // ..
+        // 6 hacer que coincidan las imagenes
+        // 7 generar pares con mismo id
+        // 8 generar numeros aleatorios que se repitan dos veces
+        // # Si dos tarjetas coinciden, déjala boca arriba 
+        //# Si no coinciden, vuélvelas a poner boca abajo después de un breve período de tiempo
+        // let contenedor = document.getElementById("contenedor-juego")
+        // for (let i = 0; i < 10; i++) {
+        //     let imagen = document.createElement("img")
+        //     imagen.setAttribute("src", "/negro.jpg")
+        //     imagen.setAttribute("width", "50px")
+        //     imagen.setAttribute("height", "50px")
+        //     imagen.setAttribute("onclick", "cambiar()")
+        //     // console.log(imagen)
+        //     contenedor.appendChild(imagen)
+        // }
+
+
+
+
+
+
+
+        // top -> down
+        // 1. Crea un juego de memoria en HTML con una cuadrícula de tarjetas boca abajo.
+        // - dentro de un div genear etiquetas img
+        // (?) boca abajo
+
+        // 2. Al hacer clic en una tarjeta, muéstrala boca arriba.
+        // - cada tarjeta tiene que tener asociado el evento onclick
+        // - cuando se active el evento mostrar la cara de la tarjeta
+
+        // 3. Si dos tarjetas coinciden, déjalas boca arriba.
+        // - maximo tenes que tener dos tarjetas iguales en la cuadricula
+        // - la tarjetas deben no deben ser adyacentes
+        // - verificar si son iguales las tarjetas y dejarlas arriba
+
+        // 4. Si no coinciden, vuélvelas a poner boca abajo después de un breve  período de tiempo
+        // -si no son iguales colocarlas abajo despues 5 seg
+
+        // down -> top
+        // - selecciono una tarjeta -> tarjeta1
+        // - selecciono una segunda tarjeta -> tarjeta2
+        // - comparo las tarjetas si son iguales
+        // - si lo son las dejo arriba y no se puede mover activar el onclick
+        // - sino lo son despues de 5 seg las pongo boca abajo y sigue el juego 
+        // - mantener las cartas arriba coicidentes mientras se sigue el juego 
+        // - tener un array de imagenes donde [0] sea la imagen negra/ tarjeta tapada
+        // - todas las imagenes cuando se crean estan tapadas -> numero0 
+        // - cuando se destapan hay que asignarles una imagen, el mismo se referencia por su id 
+        // - el id tiene que repetirse dos veces o debe ser una clase para identificar a su par
+        // - la mayoria de las tarjetas deben tener id que no sean adyacentes
+        // - generar un array de numeros aleatorios con dos repetidos 
+        // - cada elemento del array de numeros aleatorio sera asignado como id de cada imagen
+        // - asignar la imagen que corresponde a img segun su id
+        // - btn jugar : sirve para iniciar el juego mostrar las tarjetas al principio 
+        //      solo se debe activar si el div esta vacio 
+        // - btn reiniciar : sirve para mezclar las tarjetas se activa despues de jugar y mientras no se haya 
+        //     activado jugar se mantiene desactivado
+        // - dos targetas distintas se tapan
+
+        // let numeros = [1, 5, 2, 5, 1, 2, 3, 8, 8, 3]
+        let imagenAnterior = document.createElement("img")
+
+        imagenAnterior.setAttribute("id", "-1"); // Almacena la imagen clickeada anteriormente
+
+        function cambiar(event) {
+            // alert("hola");
+            console.log("cambiando... boca abajo")
+            let imagen = event.target
+            let idImagen = imagen.getAttribute("id")
+            // console.log(idImagen)
+
+            if (imagen.getAttribute("src") !== "numero0.png") {
+                imagen.setAttribute("src", "numero0.png")
+            } else {
+                switch (idImagen) {
+                    case '1':
+                        // console.log("caso 1")
+                        imagen.setAttribute("src", imagenes[1])
+                        break;
+                    case '2':
+                        imagen.setAttribute("src", imagenes[2])
+                        break;
+                    default:
+                        break;
+                }
+            }
+            const imagenActual = event.target;
+            if (imagenAnterior.getAttribute("id") === idImagen) {
+                // Se ha clickeado la misma imagen dos veces
+                console.log("¡Has hecho clic en la misma imagen dos veces!");
+                // imagenAnterior.removeEventListener("click", cambiar);
+                // imagen.removeEventListener("click", cambiar);
+            } else {
+                // Se ha clickeado una imagen diferente
+                console.log("¡Has hecho clic en una imagen diferente!");
+                imagenAnterior = imagenActual; // Actualizar la imagen anterior
+                imagenActual.setAttribute("src", "/numero0.png")
+
+            }
+        }
+        let numeros = [1, 2, 1, 2]
+        let imagenes = ['numero0.png', 'numero1.png', 'numero2.png']
+        function compararAleatorio(a, b) {
+            return Math.random() - 0.5; // Generar un número aleatorio entre -0.5 y 0.5
+        }
+        function jugar() {
+            let contenedor = document.getElementById("contenedor-juego")
+            let btnJugar = document.getElementById("btnJugar")
+            let btnReiniciar = document.getElementById("btnReiniciar")
+
+            numeros.sort(compararAleatorio);
+            for (let i = 0; i < 4; i++) {
+                let tarjeta1 = document.createElement("img")
+                tarjeta1.setAttribute("src", imagenes[0])
+                tarjeta1.setAttribute("id", numeros[i])
+                tarjeta1.setAttribute("onclick", "cambiar(event)")
+                contenedor.appendChild(tarjeta1)
+            }
+            btnJugar.style.display = "none"
+
+            btnReiniciar.style.display = "block"
+        }
+        function reiniciar() {
+
+
+
+            let contenedor = document.getElementById("contenedor-juego")
+            contenedor.innerHTML = ""
+            numeros.sort(compararAleatorio);
+            for (let i = 0; i < 4; i++) {
+                let tarjeta1 = document.createElement("img")
+                tarjeta1.setAttribute("src", imagenes[0])
+                tarjeta1.setAttribute("id", numeros[i])
+                tarjeta1.setAttribute("onclick", "cambiar()")
+                contenedor.appendChild(tarjeta1)
+            }
+        }
     </script>
 </body>
 

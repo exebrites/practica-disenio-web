@@ -6,7 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio2</title>
     <link rel="stylesheet" href="estilos.css">
+    <style>
+       
+        .clase-base {
+            text-align: center;
+            color: blueviolet;
+            font-size: x-large;
+        }
 
+        .clase-alternativa {
+            /* text-align: right; */
+            color: red;
+            font-size: x-small;
+        }
+    </style>
 </head>
 
 <body>
@@ -17,16 +30,27 @@ tamaño de la fuente). -->
     <a href="index.html">Pagina de inicio</a>
     <header>
         <h1>Ejercicio2: Cambiar estilo de elementos</h1>
-        <p>Al hacer clic
-            en cada elemento, cambia su estilo</p>
+        <p>Crea una lista de elementos (pueden ser párrafos, divs, etc.) en HTML. Al hacer clic
+            en cada elemento, cambia su estilo (por ejemplo, cambia el color de fondo o el
+            tamaño de la fuente).</p>
 
-        <span style="color: red;">Fata terminar</span>
     </header>
     <main>
-        <section></section>
+        <section>
+            <p class="clase-base" onclick="cambiar();">Elemento 1 </p>
+            <p class="clase-base" onclick="cambiar();">Elemento 2 </p>
+            <p class="clase-base" onclick="cambiar();">Elemento 3</p>
+            <p class="clase-base" onclick="cambiar();">Elemento 4 </p>
+            <p class="clase-base" onclick="cambiar();">Elemento 5 </p>
+        </section>
     </main>
     <script>
+        function cambiar() {
 
+            // console.log(event.target)
+            let elemento = event.target
+            elemento.classList.toggle('clase-alternativa')
+        }
     </script>
 </body>
 

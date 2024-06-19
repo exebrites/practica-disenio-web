@@ -1,32 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 1 </title>
+    <title>Ejercicio 1: Contador</title>
     <link rel="stylesheet" href="estilos.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+            background-color: #f0f0f0;
+        }
 
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #id_contador {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .boton-contador {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #3498db;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .boton-contador:hover {
+            background-color: #2980b9;
+        }
+
+        .boton-contador:active {
+            transform: scale(0.95);
+        }
+    </style>
 </head>
 
 <body>
     <!-- Crea un botón en HTML con un contador de clicks. Cada vez que se haga clic en el
-botón, se debería incrementar el contador y mostrar el número de clicks en la
-página. -->
-<a href="index.html">Pagina de inicio</a>
+    botón, se debería incrementar el contador y mostrar el número de clicks en la
+    página. -->
+    <a href="index.html">Pagina de inicio</a>
     <header>
-        <h1>Ejercicio1 : Contador</h1>
-        <p> incrementar el contador y mostrar el número de clicks</p>
+        <h1>Ejercicio 1: Contador</h1>
+        <p>Incrementar el contador y mostrar el número de clicks</p>
     </header>
     <main>
-        <p id="id_contador"></p>
-        <button onclick="incrementar();" type="button">Contador</button>
+        <p id="id_contador">Contador en: 0</p>
+        <button onclick="incrementar();" type="button" class="boton-contador">Contador</button>
     </main>
     <script>
-        contador = 0
+        let contador = 0;
         function incrementar() {
-            contador++
-            p_contador = document.getElementById("id_contador")
+            contador++;
+            const p_contador = document.getElementById("id_contador");
             p_contador.innerText = 'Contador en: ' + contador;
         }
     </script>

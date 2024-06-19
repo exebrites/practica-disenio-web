@@ -6,7 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio8</title>
     <link rel="stylesheet" href="estilos.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
 
+        .calculadora {
+            display: grid;
+            grid-template-rows: 1fr 3fr;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .pantalla {
+            background-color: #222;
+            color: white;
+            font-size: 2em;
+            text-align: right;
+            padding: 20px;
+        }
+
+        .botones {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+        }
+
+        .boton {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 20px;
+            font-size: 1.5em;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .boton:hover {
+            background-color: #2980b9;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,12 +67,57 @@ tamaño de la fuente). -->
             hacer clic en un botón, muestra el número o operador en pantalla. Agrega un
             botón para calcular el resultado de la expresión matemática mostrada.</p>
 
-        <span style="color: red;">Fata terminar</span>
+
     </header>
     <main>
-
+        <div class="calculadora">
+            <div id="pantalla" class="pantalla">0</div>
+            <div class="botones">
+                <button class="boton" onclick="agregarCaracter('7')">7</button>
+                <button class="boton" onclick="agregarCaracter('8')">8</button>
+                <button class="boton" onclick="agregarCaracter('9')">9</button>
+                <button class="boton" onclick="agregarCaracter('/')">/</button>
+                <button class="boton" onclick="agregarCaracter('4')">4</button>
+                <button class="boton" onclick="agregarCaracter('5')">5</button>
+                <button class="boton" onclick="agregarCaracter('6')">6</button>
+                <button class="boton" onclick="agregarCaracter('*')">*</button>
+                <button class="boton" onclick="agregarCaracter('1')">1</button>
+                <button class="boton" onclick="agregarCaracter('2')">2</button>
+                <button class="boton" onclick="agregarCaracter('3')">3</button>
+                <button class="boton" onclick="agregarCaracter('-')">-</button>
+                <button class="boton" onclick="agregarCaracter('0')">0</button>
+                <button class="boton" onclick="agregarCaracter('.')">.</button>
+                <button class="boton" onclick="calcular()">=</button>
+                <button class="boton" onclick="agregarCaracter('+')">+</button>
+                <button class="boton" onclick="limpiar()">C</button>
+            </div>
+        </div>
     </main>
     <script>
+        let pantalla = document.getElementById('pantalla');
+        let expresion = '';
+
+        function agregarCaracter(caracter) {
+            if (expresion === '' && (caracter === '*' || caracter === '/')) {
+                return;
+            }
+            expresion += caracter;
+            pantalla.textContent = expresion;
+        }
+
+        function calcular() {
+            try {
+                expresion = eval(expresion).toString();
+            } catch {
+                expresion = 'Error';
+            }
+            pantalla.textContent = expresion;
+        }
+
+        function limpiar() {
+            expresion = '';
+            pantalla.textContent = '0';
+        }
 
     </script>
 </body>

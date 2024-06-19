@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Memoria</title>
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+        #tablero {
+            display: grid;
+            grid-template-columns: repeat(4, 100px);
+            grid-template-rows: repeat(4, 100px);
+            gap: 10px;
+            margin-top: 20px;
+            /* width: 50%;
+            height: 50%; */
+        }
+
+        .tarjeta {
+            /* width: 50%;
+            height: 50%; */
+            background-color: #3498db;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .boca-arriba {
+            background-color: #e74c3c;
+            cursor: default;
+        }
+
+        main {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            width: 430px;
+            height: 250px;  
+        }
+    </style>
+</head>
+
+<body>
+    <a href="index.html">Pagina de inicio</a>
+    <header>
+        <h1>Ejercicio7: juego de Memoria</h1>
+        <p>Crea un juego de memoria en HTML con una cuadrícula de tarjetas boca abajo. Al
+            hacer clic en una tarjeta, muéstrala boca arriba. Si dos tarjetas coinciden, déjalas
+            boca arriba. Si no coinciden, vuélvelas a poner boca abajo después de un breve
+            período de tiempo.</p>
+
+      
+    </header>
+    <main>
+
+        <div id="tablero"></div>
+
+
+    </main>
+    <script>
+        const NUMERO_DE_TARJETAS = 8;
+        let tarjetas = [];
+        let primeraTarjeta = null;
+        let segundaTarjeta = null;
+        let sePuedeHacerClick = true;
+
+        function crearTablero() {
+            const tablero = document.getElementById('tablero');
+            const numeros = Array.from({ length: NUMERO_DE_TARJETAS / 2 }, (_, i) => i + 1);
+            const numerosDuplicados = [...numeros, ...numeros];
+            numerosDuplicados.sort(() => Math.random() - 0.5);
+
+            for (let numero of numerosDuplicados) {
+                const tarjeta = document.createElement('div');
+                tarjeta.classList.add('tarjeta');
+                tarjeta.dataset.numero = numero;
+                tarjeta.addEventListener('click', voltearTarjeta);
+                tablero.appendChild(tarjeta);
+                tarjetas.push(tarjeta);
+            }
+        }
+
+        function voltearTarjeta() {
+            if (!sePuedeHacerClick || this.classList.contains('boca-arriba')) {
+                return;
+            }
+
+            this.classList.add('boca-arriba');
+            this.textContent = this.dataset.numero;
+
+            if (primeraTarjeta === null) {
+                primeraTarjeta = this;
+            } else if (segundaTarjeta === null) {
+                segundaTarjeta = this;
+                verificarCoincidencia();
+            }
+        }
+
+        function verificarCoincidencia() {
+            if (primeraTarjeta.dataset.numero === segundaTarjeta.dataset.numero) {
+                reiniciarSeleccion();
+            } else {
+                sePuedeHacerClick = false;
+                setTimeout(() => {
+                    primeraTarjeta.classList.remove('boca-arriba');
+                    segundaTarjeta.classList.remove('boca-arriba');
+                    primeraTarjeta.textContent = '';
+                    segundaTarjeta.textContent = '';
+                    reiniciarSeleccion();
+                }, 1000);
+            }
+        }
+
+        function reiniciarSeleccion() {
+            [primeraTarjeta, segundaTarjeta] = [null, null];
+            sePuedeHacerClick = true;
+        }
+
+        document.addEventListener('DOMContentLoaded', crearTablero);
+
+    </script>
+</body>
+
+</html>
