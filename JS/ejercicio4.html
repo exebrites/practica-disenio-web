@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio4</title>
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin: 0 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Crea una lista de elementos (pueden ser párrafos, divs, etc.) en HTML. Al hacer clic
+en cada elemento, cambia su estilo (por ejemplo, cambia el color de fondo o el
+tamaño de la fuente). -->
+    <a href="index.html">Pagina de inicio</a>
+    <header>
+        <h1>Ejercicio4: 4. Galería de Imágenes con Botones de Navegación</h1>
+        <p>Crea una galería de imágenes en HTML con al menos tres imágenes. Agrega dos
+            botones de navegación: uno para mostrar la imagen anterior y otro para mostrar
+            la siguiente imagen. Cuando se llegue al final de la galería, vuelve a la primera
+            imagen.</p>
+    </header>
+    <main>
+        <!-- 
+        0 tres img en un array 
+        1 un lugar centrado donde se muestre la imagen
+        2 un boton a la izquierda que te muestre la anterior img
+
+        3 un boton a la derecha que te muestre la posterior img
+
+        4 cuando termines de recorrer comenzar de nuevo -->
+
+        <img src="" alt="" srcset="" id="img" width="300px" height="250px">
+        <div class="buttons">
+
+            <button onclick="anteriorImg();">Anterior</button>
+            <button onclick="siguienteImg();">Siguiente</button>
+
+        </div>
+    </main>
+    <script>
+        let imagenes = ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk6P4hrl9MUEU8Fd0Z7zpu4odeutVmTPQFCiNcwoRK0_LyG_38PDz1Uc4Ht5yafqrCqyA&usqp=CAU',
+            'https://img.freepik.com/foto-gratis/colores-arremolinados-interactuan-danza-fluida-sobre-lienzo-que-muestra-tonos-vibrantes-patrones-dinamicos-que-capturan-caos-belleza-arte-abstracto_157027-2892.jpg?size=626&ext=jpg&ga=GA1.1.672697106.1718668800&semt=sph',
+            'https://imgv3.fotor.com/images/share/fotor-ai-generate-a-lifelike-dragon.jpg'
+        ]
+        let img = document.getElementById("img")
+        // console.log(img)
+        img.setAttribute('src', imagenes[0])
+
+        function anteriorImg() {
+            const src = img.getAttribute('src')
+            // console.log(src)
+            // 2.conocer la posicion de esa imagen en imagenes
+            let indiceImagen = imagenes.findIndex(imagen => imagen === src);
+            console.log(indiceImagen)
+            console.log(imagenes.length)
+
+            if (indiceImagen <= 0) {
+                indiceImagen = imagenes.length
+                img.setAttribute('src', imagenes[imagenes.length - 1])
+
+            } else {
+                img.setAttribute('src', imagenes[indiceImagen - 1])
+            }
+
+        }
+        function siguienteImg() {
+            // 1.saber que imagen esta en img
+            const src = img.getAttribute('src')
+            // console.log(src)
+            // 2.conocer la posicion de esa imagen en imagenes
+            const indiceImagen = imagenes.findIndex(imagen => imagen === src);
+            // console.log(indiceImagen)
+            //    console.log(imagenes.length)
+            if (indiceImagen < imagenes.length - 1) {
+                img.setAttribute('src', imagenes[indiceImagen + 1])
+            } else {
+                img.setAttribute('src', imagenes[0])
+            }
+
+            // 3. avanzar a la siguiente posicion en imagenes
+
+        }
+
+    </script>
+</body>
+
+</html>

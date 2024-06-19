@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio6</title>
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+        .reloj-container {
+            text-align: center;
+            font-size: 50px;
+            font-family: monospace;
+        }
+
+        #reloj {
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Crea una lista de elementos (pueden ser párrafos, divs, etc.) en HTML. Al hacer clic
+en cada elemento, cambia su estilo (por ejemplo, cambia el color de fondo o el
+tamaño de la fuente). -->
+    <a href="index.html">Pagina de inicio</a>
+    <header>
+        <h1>Ejercicio6: Reloj Digital</h1>
+        <p>Crea un reloj digital en HTML que muestre la hora actual. El reloj debe actualizarse
+            automáticamente cada segundo.</p>
+    </header>
+    <main>
+        <div class="reloj-container">
+            <div id="reloj"></div>
+        </div>
+
+    </main>
+    <script>
+        function actualizarTiempo() {
+            const reloj = document.getElementById('reloj');
+            const hoy = new Date();
+
+            const horas = hoy.getHours().toString().padStart(2, '0');
+            const minutos = hoy.getMinutes().toString().padStart(2, '0');
+            const segundos = hoy.getSeconds().toString().padStart(2, '0');
+
+            reloj.textContent = `${horas}:${minutos}:${segundos}`;
+        }
+
+        setInterval(actualizarTiempo, 1000); // Update the clock every second
+        actualizarTiempo(); // Update the clock initially t
+    </script>
+</body>
+
+</html>

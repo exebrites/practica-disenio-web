@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 </title>
+    <link rel="stylesheet" href="estilos.css">
+
+</head>
+
+<body>
+    <!-- Crea un botón en HTML con un contador de clicks. Cada vez que se haga clic en el
+botón, se debería incrementar el contador y mostrar el número de clicks en la
+página. -->
+<a href="index.html">Pagina de inicio</a>
+    <header>
+        <h1>Ejercicio1 : Contador</h1>
+        <p> incrementar el contador y mostrar el número de clicks</p>
+    </header>
+    <main>
+        <p id="id_contador"></p>
+        <button onclick="incrementar();" type="button">Contador</button>
+    </main>
+    <script>
+        contador = 0
+        function incrementar() {
+            contador++
+            p_contador = document.getElementById("id_contador")
+            p_contador.innerText = 'Contador en: ' + contador;
+        }
+    </script>
+</body>
+
+</html>

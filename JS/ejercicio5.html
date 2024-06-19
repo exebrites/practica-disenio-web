@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio5</title>
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+        .buttons {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin: 0 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Crea una lista de elementos (pueden ser párrafos, divs, etc.) en HTML. Al hacer clic
+en cada elemento, cambia su estilo (por ejemplo, cambia el color de fondo o el
+tamaño de la fuente). -->
+    <a href="index.html">Pagina de inicio</a>
+    <header>
+        <h1>Ejercicio3: Lista de Tareas con Agregar y Eliminar</h1>
+        <p>Crea una lista de tareas en HTML con un campo de texto para agregar nuevas
+            tareas y un botón para agregarlas a la lista. Cada tarea debe tener un botón para
+            eliminarla de la lista cuando se complete.</p>
+
+    </header>
+    <main>
+        <div class="buttons">
+
+            <form action="" onsubmit="agregarTarea(event);">
+                <label for="">Nombre</label>
+                <input type="text" name="" id="nuevaTarea" placeholder="Ingrese el nombre de la nueva tarea" autofocus>
+                <span id="spanTarea" style="color: red; display: none;">Error: la tarea esta vacia</span>
+                <button type="submit">Agregar tarea</button>
+            </form>
+            <ol id="listaUL"></ol>
+        </div>
+    </main>
+    <script>
+        let tareas = []
+        function agregarTarea(event) {
+
+            event.preventDefault()
+            // alert("holaI")
+
+            let tarea = document.getElementById("nuevaTarea")
+            let spanTarea = document.getElementById("spanTarea")
+            // console.log(tarea)
+            if (tarea.value.trim() != '') {
+                spanTarea.style.display = 'none'
+
+                tareas.push(tarea.value)
+                // console.log(tareas)
+                const lista = document.getElementById('listaUL'); // Suponiendo que el ID de tu etiqueta ul es "listaUL"
+
+                // const nuevoElemento = document.createElement('li'); // Crea un nuevo elemento li
+                // nuevoElemento.textContent = 'Nuevo elemento de lista'; // Establece el texto del nuevo elemento
+
+                // lista.appendChild(nuevoElemento); // Agrega el nuevo elemento al final de la lista
+                id = tareas.length
+                lista.innerHTML += '<li id="' + id + '">' + tarea.value + ' <button style="background-color:red;" onclick=eliminarTarea(); id="' + id + '">Eliminar</button> </li>'; // Agrega el nuevo elemento al final de la lista
+                tarea.value = ""
+            } else {
+
+                spanTarea.style.display = 'block'
+            }
+
+        }
+        function eliminarTarea() {
+            // console.log(this)
+            // console.log("eliminando tarea")
+            // const lista = document.getElementById('listaUL');
+            // console.log(lista)
+            const lista = document.getElementById('listaUL'); // Suponiendo que el ID de tu etiqueta ul es "listaUL"
+            const elementosLi = lista.children; // Obtiene todos los elementos li (nodos hijos) de la lista
+            const clickedButton = event.target; // Obtiene el botón que se hizo clic
+            let idBorrar = clickedButton.getAttribute("id")
+            // console.log(elementosLi)
+            // console.log(idBorrar)
+
+            // const elementoALiEliminar = lista.children[indiceElementoAEliminar]; // Obtiene el elemento li por su índice
+            const elementoALiEliminar = document.getElementById(idBorrar); // Suponiendo que el ID del elemento li que deseas eliminar es "elementoALiEliminar"
+            // console.log(elementoALiEliminar)
+            lista.removeChild(elementoALiEliminar);
+
+
+
+
+        }
+    </script>
+</body>
+
+</html>

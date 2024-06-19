@@ -1,20 +1,67 @@
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <script>
-        function opt() {
-            valor = 1
-            while (valor <= 10) {
-                alert("Esto sale 10 veces:" + valor);
-                valor++;
-                console.log(valor)
-            }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios html</title>
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+        /* General body styling */
+
+
+        /* Section and list styling */
+        section {
+            margin: 0;
+            padding: 0;
         }
-    </script>
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        /* Link styling */
+        a {
+            text-decoration: none;
+            color: #4a90e2;
+            font-size: 1.2em;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #007acc;
+        }
+    </style>
 </head>
 
 <body>
-    <a href="www.itdurango.edu.mx" onmouseover="opt();">ir a Pto. Iguazú</a>
+    <header class="centrado">
+        <h1>Ejercicios JavaScript</h1>
+        <p>Ingrese a cada sección para ver los ejercicios</p>
+    </header>
+    <main>
+        <section>
+            <ul>
+                <li><a href="ejercicio1.html">Ejercicio 1</a></li>
+                <li><a href="ejercicio2.html">Ejercicio 2</a></li>
+                <li><a href="ejercicio3.html">Ejercicio 3</a></li>
+                <li><a href="ejercicio4.html">Ejercicio 4</a></li>
+                <li><a href="ejercicio5.html">Ejercicio 5</a></li>
+                <li><a href="ejercicio6.html">Ejercicio 6</a></li>
+                <li><a href="ejercicio7.html">Ejercicio 7</a></li>
+                <li><a href="ejercicio8.html">Ejercicio 8</a></li>
+
+
+            </ul>
+        </section>
+    </main>
 </body>
 
 </html>
